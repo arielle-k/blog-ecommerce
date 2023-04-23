@@ -79,10 +79,10 @@ class PostController extends Controller
         if (! Gate::allows('update-post', $post)) {
             //abort(403);
             session('error','Vous n\'avez pas le droit de modifer le post!');
-            return back();
+           return back();
         }
 
-        $user_id=1;
+        $user_id=Auth::user()->id;
         $data=$request->all();
 
         $online = array_key_exists ('online',$data) ? $data['online'] : 0 ; //aller chercher si la cle online existe dans  datas
@@ -109,36 +109,5 @@ class PostController extends Controller
     }
 
     //afficher la view de login
-    public function login(){
-        return view('authentification.login');
-    }
 
-    //script pour gerer la connexion
-    public function handleLogin(Request $request){
-        $credentials = $request->validate([
-            'email' => ['required', 'email'],
-            'password' => ['required'],
-        ]);
-
-        if (Auth::attempt($credentials)) {
-            $request->session()->regenerate();
-
-            return redirect()->route('posts.index');
-        }
-
-        return back()->withErrors([
-            'email' => 'The provided credentials do not match our records.',
-        ])->onlyInput('email');
-    }
-
-    public function logout(Request $request){
-
-    Auth::logout();
-
-    $request->session()->invalidate();
-
-    $request->session()->regenerateToken();
-
-    return redirect()->route('login');
-    }
 }
