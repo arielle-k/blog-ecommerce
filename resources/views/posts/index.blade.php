@@ -1,12 +1,12 @@
-@extends('layout')
+@extends('layouts.app')
 
 @section('title', 'home')
-
 @section('content')
 @component('compoments.session')@endcomponent
 <div class="d-flex flex-wrap">
         @foreach($posts as $post)
             <div class="col-md-4 py-3 px-3">
+                <div class="card-group">
                 <div class="card w-100">
                     <div class="card-body">
                         <h5 class="card-title">{{$post->title}}</h5>
@@ -19,7 +19,7 @@
                             <form action="{{route('posts.destroy',$post)}}" method="post">
                                 @method('DELETE')
                                 @csrf
-                                <button type="submit" class="btn btn-danger ml-2">
+                                <button type="submit" class="btn btn-danger bg-danger ml-2">
                                     <i class="fas fa-trash"></i>
                                 </button>
                             </form>
@@ -29,6 +29,7 @@
                         <small>Depuis le {{$post->created_at->format('d M Y')}} par {{$post->user->name}} </small>
                     </div>
                 </div>
+            </div>
             </div>
         @endforeach
     </div>

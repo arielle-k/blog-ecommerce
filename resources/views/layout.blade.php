@@ -36,24 +36,11 @@
     </style>
 </head>
 <body>
-    <header class="bg-primary py-3">
-        <nav class="d-flex container justify-content-between align-items-center ">
-            <a href="{{ route('posts.index') }}" class="logo">Blog<span>Arielle</span> </a>
-            <ul class="menu-list m-0">
-                <li class="menu-item d-inline me-2"><a href="{{ route('posts.index') }}">Accueil</a></li>
-                @auth
-                <li class="menu-item d-inline ml-4 me-2"><a href="{{route('posts.create')}}">creer</a></li>
-                <li class="menu-item d-inline ml-4 me-2"><a href="{{route('logout')}}">Deconnexion</a></li>
-                @else
-                <li class="menu-item d-inline ml-4"><a href="{{route('login')}}">Connexion</a></li>
-                @endauth
-            </ul>
-        </nav>
-    </header>
+
 
 
     <div class="container mt-4">
-        @yield('content')
+        @yield('body')
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" ></script>

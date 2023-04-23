@@ -1,4 +1,4 @@
-@extends('layout')
+@extends('layouts.app')
 @section('title','home')
 @section('content')
 
@@ -37,7 +37,7 @@
             'value'=>$post->online
         ])
         @endcomponent
-        <button type="submit" class="btn btn-primary mt-3">Modifier</button>
+        <button type="submit" class="btn btn-primary mt-3 text-dark fw-bold">Modifier</button>
     </form>
 </div>
 

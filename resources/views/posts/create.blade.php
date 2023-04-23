@@ -1,7 +1,6 @@
-@extends('layout')
-@section('title','home')
+@extends('layouts.app')
+@section('title', 'create')
 @section('content')
-
 <div class="form-container w-100 m-auto">
     <form action="{{route('posts.store')}}" method="post">
         @csrf
@@ -9,7 +8,7 @@
         'title'=>'Title',
         'name'=>'title',
         'type'=>'text',
-        'value'=>'un titre de test'
+        'value'=>''
        ])
         @endcomponent
         @component('compoments.input',[
@@ -17,7 +16,7 @@
             'name'=>'category',
             'type'=>'select',
             'options'=>$categories,
-            'value' => $post->category_id
+            'value' =>''
            ])
             @endcomponent
 
@@ -25,7 +24,7 @@
             'title'=>'Description',
             'name'=>'body',
             'type'=>'textarea',
-            'value'=>'une description de test'
+            'value'=>''
         ])
         @endcomponent
 
@@ -36,7 +35,7 @@
             'value'=>True
         ])
         @endcomponent
-        <button type="submit" class="btn btn-primary mt-3">Creer</button>
+        <button type="submit" class="btn btn-primary mt-3 text-dark fw-bold">Creer</button>
     </form>
 </div>
 
